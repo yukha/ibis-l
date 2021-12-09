@@ -1,0 +1,37 @@
+version: '3.7'
+
+networks:
+  backend-ibis-l:
+    external: true
+    name: backend-ibis-l
+
+
+services:
+  nginx:
+    image: nginx:1.15-alpine
+    container_name: nginx
+    #restart: unless-stopped
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/certs:/etc/nginx/certs
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - backend-ibis-l
+    depends_on:
+      - youtrack-ibas
+
+  youtrack-ibas:
+    image: jetbrains/youtrack:2021.4.34389
+    container_name: youtrack-ibas
+    #restart: unless-stopped
+    volumes:
+      - ./youtrack-ibas/backups:/opt/youtrack/backups
+      - ./youtrack-ibas/conf:/opt/youtrack/conf
+      - ./youtrack-ibas/data:/opt/youtrack/data
+      - ./youtrack-ibas/logs:/opt/youtrack/logs
+    #ports:
+    #  - "8080:8080"
+    networks:
+      - backend-ibis-l

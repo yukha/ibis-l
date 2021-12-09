@@ -1,0 +1,7 @@
+
+youtrack-ibas/backups/*
+youtrack-ibas/conf/*
+youtrack-ibas/data/*
+youtrack-ibas/logs/*
+nginx/certs/key
+nginx/certs/pem

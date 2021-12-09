@@ -7,7 +7,7 @@ cd /app
 ### Get scripts from git
 on ibis-l:
 ```
-git clone https://github.com/yukha/ibis-l.git
+git clone https://github.com/yukha/ibis-l.git .
 ```
 ### Set TLS certificate
 on local machine:
